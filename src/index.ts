@@ -4,17 +4,16 @@ import resolvers from '../graphql/resolvers';
 import UserAPI from './datasources/user';
 import ExampleDatasource from './datasources/exampleDatasource';
 
-const dataSources = () => ({
-  userAPI: new UserAPI(),
-  exampleDatasource: new ExampleDatasource()
-});
+const dataSources = () => {
+    return {
+        userAPI: new UserAPI(),
+        exampleDatasource: new ExampleDatasource()
+    };
+};
 
-const context = async ({ req }:{req: any}) => {
-  return null;
-}
+const server = new ApolloServer({ typeDefs: typeDefs, resolvers: resolvers, dataSources: dataSources });
 
-const server = new ApolloServer({typeDefs, resolvers, dataSources, context});
-
-server.listen().then(({url}:{url: String}) => {
-  console.log(url);
+server.listen().then(({ url }:{url: String}) => {
+    // eslint-disable-next-line no-undef
+    console.log(url);
 });
