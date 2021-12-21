@@ -16,7 +16,7 @@ class UserApi extends DataSource {
 
     getUsers = () => {
         return users;
-    }
+    };
 }
 
 export default UserApi;

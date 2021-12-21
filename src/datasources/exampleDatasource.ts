@@ -15,7 +15,7 @@ class ExampleDatasource extends DataSource {
 
     exampleUsers = () => {
         return users;
-    }
+    };
 }
 
 export default ExampleDatasource;

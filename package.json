@@ -1,15 +1,24 @@
 {
   "name": "graphqltypescript",
   "version": "1.0.0",
-  "description": "",
+  "description": "GraphQL with Typescript backend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pastor59/graphqlTypescript"
+  },
   "main": "index.js",
   "scripts": {
     "start": "npm run tsc && node ./build/src/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "eslint": "eslint ./**/*.ts",
+    "eslint:fix": "eslint ./**/*.ts --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "graphql",
+    "typescript"
+  ],
+  "author": "Jordi Pastor",
   "license": "ISC",
   "dependencies": {
     "apollo-datasource": "^3.3.0",
@@ -17,7 +26,10 @@
     "graphql": "^16.0.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
     "@types/node": "^16.11.12",
+    "eslint": "^8.5.0",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.2"
