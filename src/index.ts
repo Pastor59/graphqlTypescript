@@ -1,19 +1,19 @@
 import { ApolloServer } from 'apollo-server';
-import typeDefs from '../graphql/schema';
-import resolvers from '../graphql/resolvers';
-import UserAPI from './datasources/user';
-import ExampleDatasource from './datasources/exampleDatasource';
+import dotenv from 'dotenv';
+dotenv.config();
+import Database from './database';
+import { UserDataSource, UserResolver, userTypeDefinition } from './user';
 
 const dataSources = () => {
-    return {
-        userAPI: new UserAPI(),
-        exampleDatasource: new ExampleDatasource()
-    };
+  return {
+    user: new UserDataSource()
+  };
 };
 
-const server = new ApolloServer({ typeDefs: typeDefs, resolvers: resolvers, dataSources: dataSources });
-
+const server = new ApolloServer({ typeDefs: userTypeDefinition, resolvers: UserResolver, dataSources: dataSources });
+const database = Database.getInstance();
+database.connect();
 server.listen().then(({ url }:{url: String}) => {
-    // eslint-disable-next-line no-undef
-    console.log(url);
+  // eslint-disable-next-line no-undef
+  console.log(url);
 });

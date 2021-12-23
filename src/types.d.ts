@@ -1,17 +1,19 @@
-import UserApi from './datasources/user';
-import ExampleDatasource from './datasources/exampleDatasource';
+import UserDataSource from './user/userDataSource';
 
 export interface DataSourceConfig<TContext = any> {
-    context: TContext;
+  context: TContext;
 }
 
-export interface user {
-    name: string;
-    email: string;
-    projects: object
+export interface userType {
+  _id: string;
+  username: string;
+  password: string;
+}
+
+export interface Model {
+  save: Promise
 }
 
 export interface dataSourcesType {
-    userAPI: UserApi;
-    exampleDatasource: ExampleDatasource
+  user: UserDataSource;
 }
