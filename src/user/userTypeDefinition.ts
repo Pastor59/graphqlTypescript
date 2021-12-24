@@ -1,17 +1,17 @@
-import { gql } from 'apollo-server';
+import { gql } from 'apollo-server-express';
 
 const userTypeDefinition = gql`
   type User {
     username: String
-    password: String
   }
 
   type Query {
-    users: [User]
+    login(username: String!, password: String!): String!
   }
 
   type Mutation {
     createUser(username: String!, password: String!): String!
+    saveCoordinates(latitude: Float!, longitude: Float!): String!
   }
 `;
 

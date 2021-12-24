@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: { type: String, unique: true },
   password: String,
-  position: [ {
+  positions: [ {
     date: String,
     coordinate: {
       latitude: Number,

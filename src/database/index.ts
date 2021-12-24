@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Model } from '../types';
+import { Save, FindOne } from '../types';
 
 class Database {
   // eslint-disable-next-line no-use-before-define
@@ -24,9 +24,12 @@ class Database {
         console.log(`${error}\nError connecting to DB\nHost: ${DB_HOST}\nName: ${DB_NAME}\nUser: ${DB_USER}`);
       });
   };
-  save = async(model: Model) => {
+  save = async(model: Save) => {
     const modelSaved = await model.save();
     return modelSaved;
+  };
+  findOne = async(model: FindOne) => {
+    return await model.findOne();
   };
 };
 
