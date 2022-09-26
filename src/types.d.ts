@@ -1,3 +1,4 @@
+import BookingDataSource from './booking/bookingDateSource';
 import UserDataSource from './user/userDataSource';
 
 export interface DataSourceConfig<TContext = any> {
@@ -22,6 +23,7 @@ export interface FindOne {
 
 export interface dataSourcesType {
   user: UserDataSource;
+  booking: BookingDataSource
 }
 
 export type Algorithm =

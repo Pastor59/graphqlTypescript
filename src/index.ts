@@ -5,10 +5,12 @@ import express from 'express';
 import expressJWT from 'express-jwt';
 import Database from './database';
 import { UserDataSource, UserResolver, userTypeDefinition } from './user';
+import { BookingDataSource, BookingResolver, bookingTypeDefinition } from './booking';
 
 const dataSources = () => {
   return {
-    user: new UserDataSource()
+    user: new UserDataSource(),
+    booking: new BookingDataSource()
   };
 };
 
@@ -30,8 +32,8 @@ app.use(
 
 const startServer = async() => {
   const server = new ApolloServer({
-    typeDefs: userTypeDefinition,
-    resolvers: UserResolver,
+    typeDefs: [ userTypeDefinition, bookingTypeDefinition ],
+    resolvers: [ UserResolver, BookingResolver ],
     dataSources: dataSources,
     context: ({ req }) => {
       const user = req.user || null;
